@@ -1,18 +1,17 @@
 #!/bin/bash
 
-if [ $# -ne 3 ]
+if [ $# -lt 2 ]
 then
-    echo "Usage: $0 FIRST_ID LAST_ID OUTPUT_FILE"
+    echo "Usage: $0 OUTPUT_FILE ID1 ID2 ID3 ..."
     exit 1
 fi
 
-FIRST_ID=$1
-LAST_ID=$2
-OUTPUT=$3
+OUTPUT=$1
+shift
 
 URL_BASE="https://class.coursera.org/startup-001/lecture/download.mp4?lecture_id="
 
-VIDEOS=`./download.sh $URL_BASE $FIRST_ID $LAST_ID`
+VIDEOS=`./download.sh $URL_BASE $@`
 
 echo $VIDEOS
 
