@@ -10,7 +10,14 @@ sudo apt-get -y install autoconf automake build-essential git libass-dev libgpac
 mkdir -p ~/ffmpeg_sources
 
 echo "Installing yasm"
-sudo apt-get install yasm
+wget http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz
+tar xzvf yasm-1.2.0.tar.gz
+cd yasm-1.2.0
+./configure --prefix="$HOME/ffmpeg_build" --bindir="$HOME/bin"
+make
+make install
+make distclean
+. ~/.profile
 
 echo "Install x264"
 cd ~/ffmpeg_sources
